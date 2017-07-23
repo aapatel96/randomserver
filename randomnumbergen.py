@@ -3,7 +3,7 @@
 
 import random, string, pymongo, telegram, os
 
-from flask import Flask
+from flask import Flask, request
 
 ##bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
 
