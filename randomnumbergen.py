@@ -1,7 +1,9 @@
 ##random number generator server
 
 
-import random, string, pymongo, Flask, telegram
+import random, string, pymongo, telegram
+
+from flask import Flask
 
 bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
 
