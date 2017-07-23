@@ -16,3 +16,8 @@ def randomword(length):
    bot.send_message(chat_id='89380112',text=length)
    bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
 ##   return ''.join(random.choice(string.lowercase) for i in range(length))
+
+
+
+if __name__ == "__main__":
+	app.run()
