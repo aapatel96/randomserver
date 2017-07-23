@@ -13,9 +13,9 @@ app = Flask(__name__)
 @app.route("/random", methods=['POST'])
 def randomword(length):
    length = request.args.get('length')
-   bot.send_message(chat_id='89380112',text=length)
-   bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
-   return "beep"
+##   bot.send_message(chat_id='89380112',text=length)
+##   bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
+   return str(length)
 ##   return ''.join(random.choice(string.lowercase) for i in range(length))
 
 
