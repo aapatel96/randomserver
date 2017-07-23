@@ -15,9 +15,15 @@ def randomword(length):
    length = request.args.get('length')
    bot.send_message(chat_id='89380112',text=length)
    bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
+   return "beep"
 ##   return ''.join(random.choice(string.lowercase) for i in range(length))
 
 
 
 if __name__ == "__main__":
-	app.run()
+    PORT = int(os.environ.get('PORT', '5000'))
+
+    app.run(
+        host="0.0.0.0",
+        port=PORT
+    )
