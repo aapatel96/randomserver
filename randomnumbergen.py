@@ -12,11 +12,14 @@ app = Flask(__name__)
 
 @app.route("/random", methods=['POST'])
 def randomword():
-   
-   print request.form['length']
+   try:
+      length = int(request.form['length'])
+      return {'length':length}
+   except:
+   	  return {"error":"Please pass numbers only"}
 ##   bot.send_message(chat_id='89380112',text=length)
 ##   bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
-   return str(length)
+##   return str(length)
 ##   return ''.join(random.choice(string.lowercase) for i in range(length))
 
 
