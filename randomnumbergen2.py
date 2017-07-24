@@ -1,7 +1,9 @@
 ##random number generator server
 
 
-import random, string, pymongo, telegram, os, codecs
+import random, string, pymongo, telegram, os, codecs, boto3
+
+from docx import Document
 
 from flask import Flask, request, jsonify
 
@@ -12,6 +14,11 @@ sys.setdefaultencoding('utf8')
 
 bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
 
+s3 = boto3.client(
+    's3',
+    aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
+)
 
 app = Flask(__name__)
 
@@ -23,10 +30,7 @@ def randomword():
    poatemplate = open('template.txt','r')
    poatext = poatemplate.read()
    poatext = poatext.decode('unicode_escape').encode('utf-8')
-   print type(poatext)
-   print type(name)
-   print type(address)
-   print type(passport_number)
+
 
    poatext= poatext.replace('GRANTORNAME',name)
    poatext=poatext.replace('GRANTORADDRESS',address)
@@ -38,9 +42,19 @@ def randomword():
    userfile.close()
    userfile = open(userfilename,'r')
    file_text = userfile.read()
-   bot.send_message(chat_id='89380112', text = file_text[0:4096])
+   file_text_comps = file_text.split('[paragraph]')
+   document = Document()
+   document.add_heading(file_text_comps[0], level=1)
+   file_text_comps= file_text_comps[1:]
+   for paragraph in file_text_comps:
+      document.add_paragraph(para)
+   document.save(name+'.docx')
+   s3.upload_file(name+'.docx','powerofattorneybot',name+'.docx')
 
-   bot.send_message(chat_id='89380112', text = file_text[4096:8192])
+
+
+
+
 
 
 ##   bot.send_document(chat_id='89380112',document=userfile)
@@ -55,7 +69,6 @@ def randomword():
 ##   bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
 ##   return str(length)
 ##   return ''.join(random.choice(string.lowercase) for i in range(length))
-
 
 if __name__ == "__main__":
     PORT = int(os.environ.get('PORT', '5000'))
