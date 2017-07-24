@@ -1,11 +1,12 @@
 ##random number generator server
 
 
-import random, string, pymongo, telegram, os
+import random, string, pymongo, telegram, os, boto3
 
 from flask import Flask, request, jsonify
 
 ##bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
+
 
 
 app = Flask(__name__)
@@ -16,10 +17,7 @@ def randomword():
       return jsonify(status='success',string=''.join(random.choice(string.lowercase) for i in range(int(request.form['length']))))
    except:
       return jsonify(status='failed',error="Please pass numbers only")
-##   bot.send_message(chat_id='89380112',text=length)
-##   bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
-##   return str(length)
-##   return ''.join(random.choice(string.lowercase) for i in range(length))
+
 
 
 if __name__ == "__main__":

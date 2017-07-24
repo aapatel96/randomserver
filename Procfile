@@ -1,1 +1,1 @@
-web: python randomnumbergen2.py runserver 0.0.0.0:5000
+web: python randomnumbergen.py runserver 0.0.0.0:5000
