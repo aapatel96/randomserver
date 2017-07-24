@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route("/random", methods=['POST'])
 def randomword():
    try:
-      return jsonify(status='success',length=int(request.form['length']))
+      return jsonify(status='success',length=''.join(random.choice(string.lowercase) for i in range(int(request.form['length']))))
    except:
       return jsonify(status='failed',error="Please pass numbers only")
 ##   bot.send_message(chat_id='89380112',text=length)
