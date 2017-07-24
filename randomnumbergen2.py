@@ -42,6 +42,7 @@ def randomword():
    userfile.close()
    userfile = open(userfilename,'r')
    file_text = userfile.read()
+   file_text = file_text.decode('unicode_escape').encode('utf-8')
    file_text_comps = file_text.split('[paragraph]')
    document = Document()
    document.add_heading(file_text_comps[0], level=1)
