@@ -44,7 +44,6 @@ def randomword():
    userfile.write(poatext)
    userfile.close()
    s3.upload_file(userfilename,'powerofattorneybot',userfilename)
-
    userfilenamealphabets = []
    for char in userfilename:
       if char == ' ':
@@ -53,14 +52,14 @@ def randomword():
          userfilenamealphabets.append(char)
 
    aws_url_filename= ''.join(userfilenamealphabets)
-
    aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+aws_url_filename
    
+
+   userfiletext = open(userfilename,'r').read()
+   userfiletext = re.sub(r'[^\x00-\x7F]+|\x0c',' ', userfiletext)
+
+   file_text_comps = userfiletext.split('[paragraph]')
    '''
-   userfile = open(userfilename,'r')
-   file_text = userfile.read()
-   file_text = file_text.decode('unicode_escape').encode('utf-8')
-   file_text_comps = file_text.split('[paragraph]')
    document = Document()
    document.add_heading(file_text_comps[0], level=1)
    file_text_comps= file_text_comps[1:]
@@ -71,14 +70,14 @@ def randomword():
       document.add_paragraph(paragraph)
 
    document.save(name+'.docx')
-   
    '''
+   
 
 ##   bot.send_document(chat_id='89380112',document=userfile)
 
 
    try:
-      return jsonify(status='success',name=name,address = address,passport_number=passport_number,url=aws_url)
+      return jsonify(status='success',name=name,address = address,passport_number=passport_number,url=aws_url,paras=str(len(file_text_comps)))
    except:
       return jsonify(status='failed',error="Please pass numbers only")
 
