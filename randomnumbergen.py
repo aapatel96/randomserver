@@ -3,7 +3,7 @@
 
 import random, string, pymongo, telegram, os
 
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 ##bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
 
@@ -13,10 +13,9 @@ app = Flask(__name__)
 @app.route("/random", methods=['POST'])
 def randomword():
    try:
-      length = int(request.form['length'])
-      return {'length':length}
+      return jsonify(status='success',length=int(request.form['length']))
    except:
-   	  return {"error":"Please pass numbers only"}
+      return jsonify(status='failed',error="Please pass numbers only")
 ##   bot.send_message(chat_id='89380112',text=length)
 ##   bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
 ##   return str(length)
