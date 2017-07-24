@@ -41,6 +41,8 @@ def randomword():
    userfile.write(poatext)
    userfile.close()
    s3.upload_file(userfilename,'powerofattorneybot',userfilename)
+
+aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+userfilename
    
    '''
    userfile = open(userfilename,'r')
@@ -59,16 +61,11 @@ def randomword():
    document.save(name+'.docx')
    '''
 
-
-
-
-
-
 ##   bot.send_document(chat_id='89380112',document=userfile)
 
 
    try:
-      return jsonify(status='success',name=name,address = address)
+      return jsonify(status='success',name=name,address = address,passport_number=passport_number,url=aws_url)
    except:
       return jsonify(status='failed',error="Please pass numbers only")
 
