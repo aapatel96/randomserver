@@ -59,7 +59,7 @@ def randomword():
    userfiletext = re.sub(r'[^\x00-\x7F]+|\x0c',' ', userfiletext)
 
    file_text_comps = userfiletext.split('[paragraph]')
-   '''
+   
    document = Document()
    document.add_heading(file_text_comps[0], level=1)
    file_text_comps= file_text_comps[1:]
@@ -70,7 +70,7 @@ def randomword():
       document.add_paragraph(paragraph)
 
    document.save(name+'.docx')
-   '''
+   
    
 
 ##   bot.send_document(chat_id='89380112',document=userfile)
