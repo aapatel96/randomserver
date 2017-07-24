@@ -42,7 +42,7 @@ def randomword():
    userfile.close()
    s3.upload_file(userfilename,'powerofattorneybot',userfilename)
 
-aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+userfilename
+   aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+userfilename
    
    '''
    userfile = open(userfilename,'r')
@@ -59,6 +59,7 @@ aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+userfilename
       document.add_paragraph(paragraph)
 
    document.save(name+'.docx')
+   
    '''
 
 ##   bot.send_document(chat_id='89380112',document=userfile)
