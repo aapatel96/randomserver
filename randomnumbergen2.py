@@ -20,10 +20,9 @@ def randomword():
    name = request.form['name']
    address = request.form['address']
    passport_number = request.form['passport_number']
-   poatemplate = codecs.open('template.txt','r', encoding='utf-8')
-
+   poatemplate = open('template.txt','r')
    poatext = poatemplate.read()
-
+   poatext = poatext.decode('unicode_escape').encode('utf-8')
    print type(poatext)
    print type(name)
    print type(address)
