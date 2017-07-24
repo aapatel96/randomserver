@@ -18,15 +18,14 @@ def randomword():
    name = request.form['name']
    try:
       string = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
-   	  isInDB = True
-   	  while isInDB == True:
-   	  	stringInDBactive.find_one({'string':string,'name':name})
-   	  	if stringInDB == None:
-   	  		active.insert_one({'string':string,'name':name})
-   	  		break
-   	  	else:
-   	  		string = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
-
+      isInDB = True
+      while isInDB == True:
+        stringInDBactive.find_one({'string':string,'name':name})
+        if stringInDB == None:
+            active.insert_one({'string':string,'name':name})
+            break
+        else:
+            string = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
       return jsonify(status='success',string=string,name=name)
    except:
       return jsonify(status='failed',error="Please pass numbers only")
