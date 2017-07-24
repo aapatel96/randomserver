@@ -17,12 +17,12 @@ app = Flask(__name__)
 def randomword():
    name = request.form['name']
 ##   try:
-   string = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
+   randomstring = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
    isInDB = True
    while isInDB == True:
-     stringInDBactive.find_one({'string':string,'name':name})
+     stringInDBactive.find_one({'string':randomstring,'name':name})
      if stringInDB == None:
-         active.insert_one({'string':string,'name':name})
+         active.insert_one({'string':randomstring,'name':name})
          break
      else:
          string = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
