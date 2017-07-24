@@ -28,7 +28,7 @@ def randomword():
          break
      else:
          string = ''.join(random.choice(lowercase) for i in range(int(request.form['length'])))
-   return jsonify(status='success',string=string,name=name)
+   return jsonify(status='success',string=random_string,name=name)
 ##   except:
 ##      return jsonify(status='failed',error="Please pass numbers only")
 
