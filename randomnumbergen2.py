@@ -48,8 +48,10 @@ def randomword():
    file_text_comps= file_text_comps[1:]
    count =0
    for paragraph in file_text_comps:
-   	  print count
+      count = count+ 1
+      print count
       document.add_paragraph(paragraph)
+
    document.save(name+'.docx')
    s3.upload_file(name+'.docx','powerofattorneybot',name+'.docx')
 
