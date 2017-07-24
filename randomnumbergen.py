@@ -17,7 +17,7 @@ app = Flask(__name__)
 def randomword():
    name = request.form['name']
    try:
-   	  string = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
+      string = ''.join(random.choice(string.lowercase) for i in range(int(request.form['length'])))
    	  isInDB = True
    	  while isInDB == True:
    	  	stringInDBactive.find_one({'string':string,'name':name})
