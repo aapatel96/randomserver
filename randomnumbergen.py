@@ -22,7 +22,7 @@ def randomword():
 
    isInDB = True
    while isInDB == True:
-     stringInDBactive.find_one({'string':random_string,'name':name})
+     stringInDB=active.find_one({'string':random_string,'name':name})
      if stringInDB == None:
          active.insert_one({'string':random_string,'name':name})
          break
