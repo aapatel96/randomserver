@@ -2,14 +2,9 @@
 
 
 import random, string, pymongo, telegram, os, codecs, boto3, re, os
-
 from docx import Document
-
-
 from docx import Document
-
 from flask import Flask, request, jsonify
-
 import sys 
 
 reload(sys)  
@@ -30,10 +25,9 @@ def randomword():
    name = request.form['name']
    address = request.form['address']
    passport_number = request.form['passport_number']
-   poatemplate = open('template.txt','r')
+   poatemplate = open('template2.txt','r')
    poatext = poatemplate.read()
    poatext = poatext.decode('unicode_escape').encode('utf-8')
-
 
    poatext= poatext.replace('GRANTORNAME',name)
    poatext=poatext.replace('GRANTORADDRESS',address)
@@ -69,10 +63,7 @@ def randomword():
    aws_url_filename= ''.join(userfilenamealphabets)
    aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+aws_url_filename
    
-   
-
 ##   bot.send_document(chat_id='89380112',document=userfile)
-
 
    try:
       return jsonify(status='success',name=name,address = address,passport_number=passport_number,url=aws_url,paras=str(len(file_text_comps)))
