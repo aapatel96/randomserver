@@ -40,6 +40,9 @@ def randomword():
    userfile = open(userfilename,'w')
    userfile.write(poatext)
    userfile.close()
+   s3.upload_file(userfilename,'powerofattorneybot',userfilename)
+   
+   '''
    userfile = open(userfilename,'r')
    file_text = userfile.read()
    file_text = file_text.decode('unicode_escape').encode('utf-8')
@@ -54,8 +57,7 @@ def randomword():
       document.add_paragraph(paragraph)
 
    document.save(name+'.docx')
-   s3.upload_file(name+'.docx','powerofattorneybot',name+'.docx')
-
+   '''
 
 
 
