@@ -10,7 +10,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route("/random/", methods=['POST'])
+@app.route("/random", methods=['POST'])
 def randomword():
    
    print request.form['length']
