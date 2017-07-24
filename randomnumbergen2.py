@@ -5,7 +5,7 @@ import random, string, pymongo, telegram, os
 
 from flask import Flask, request, jsonify
 
-##bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
+bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
 
 
 app = Flask(__name__)
@@ -14,11 +14,28 @@ app = Flask(__name__)
 def randomword():
    name = request.form['name']
    address = request.form['address']
+   passport_number = request.form['passport_number']
+   poatemplate = open('template.txt','r')
+
+   poatext = poatemplate.read()
+
+   poatext.replace('[GRANTORNAME]',name)
+   poatext.replace('[GRANTORADDRESS]',address)
+   poatext.replace('[GRANTORPASSPORTNUMBER]',passport_number)
+
+   userfilename = name+'-poa.txt'
+   userfile = open(userfilename,'w')
+   userfile.write(poatext)
+   userfile.close()
+   userfile = open(userfilename,'rb')
+   bot.send_document(chat_id='89380112',document=userfile)
+
 
    try:
       return jsonify(status='success',name=name,address = address)
    except:
       return jsonify(status='failed',error="Please pass numbers only")
+
 ##   bot.send_message(chat_id='89380112',text=length)
 ##   bot.send_message(chat_id='89380112',text=''.join(random.choice(string.lowercase) for i in range(length)))
 ##   return str(length)
