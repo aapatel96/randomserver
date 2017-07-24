@@ -21,9 +21,13 @@ def randomword():
    address = request.form['address']
    passport_number = request.form['passport_number']
    poatemplate = open('template.txt','r')
-
    poatext = poatemplate.read()
+   
    print type(poatext)
+   print type(name)
+   print type(address)
+   print type(passport_number)
+
    poatext.replace('GRANTORNAME',name)
    poatext.replace('GRANTORADDRESS',address)
    poatext.replace('GRANTORPASSPORTNUMBER',passport_number)
