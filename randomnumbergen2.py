@@ -10,10 +10,13 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route("/random", methods=['POST'])
+@app.route("/create", methods=['POST'])
 def randomword():
+   name = request.form['name']
+   address = request.form['address']
+
    try:
-      return jsonify(status='success',string=''.join(random.choice(string.lowercase) for i in range(int(request.form['length']))))
+      return jsonify(status='success',name=name,address = address)
    except:
       return jsonify(status='failed',error="Please pass numbers only")
 ##   bot.send_message(chat_id='89380112',text=length)
