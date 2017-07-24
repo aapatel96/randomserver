@@ -24,7 +24,7 @@ def randomword():
       while isInDB == True:
         stringInDB=active.find_one({'string':random_string,'name':name})
         if stringInDB == None:
-            active.insert_one({'string':random_string,'name':name})
+            active.insert_one({'string':random_string,'name':name,'aws_url':None})
             break
         else:
             string = ''.join(random.choice(lowercase) for i in range(int(request.form['length'])))
