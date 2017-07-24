@@ -5,6 +5,11 @@ import random, string, pymongo, telegram, os
 
 from flask import Flask, request, jsonify
 
+import sys  
+
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
 bot = telegram.Bot('395089971:AAGdmNnerGxByQZqhjen2hAGIZ2CBW-WcnY')
 
 
@@ -18,7 +23,7 @@ def randomword():
    poatemplate = open('template.txt','r')
 
    poatext = poatemplate.read()
-
+   poatext = poatext..encode('utf-8')
    poatext.replace('[GRANTORNAME]',name)
    poatext.replace('[GRANTORADDRESS]',address)
    poatext.replace('[GRANTORPASSPORTNUMBER]',passport_number)
