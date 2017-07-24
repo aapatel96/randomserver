@@ -1,7 +1,7 @@
 
 GENERAL POWER OF ATTORNEY
 
-KNOW ALL MEN BY THESE PRESENTS THAT I [GRANTORNAME](“the Grantor”), residing at [GRANTORADDRESS]
+KNOW ALL MEN BY THESE PRESENTS THAT I GRANTORNAME(“the Grantor”), residing at GRANTORADDRESS
 DO HEREBY NOMINATE APPOINT AND CONSTITUTE Aditya Patel, son/daughter of Ashish Patel (‘the Attorney’ who has subscribed his/her
 signature hereunder in token of identification) and at present residing at 112, Embassy Tranquil, 22, 8th Main, 3rd Block, Koramangala, Bangalore, KA (560034)
 to be my lawful Attorney in my name and on my behalf to do any one or all of the
@@ -103,7 +103,7 @@ pursuant to the powers hereinbefore mentioned.
 
 In Witness Whereof, I ______________________________________ have hereunto set and
 subscribed my hands at ____________________ on _______________________.
-Passport number of Grantor:- [GRANTORPASSPORTNUMBER]
+Passport number of Grantor:- GRANTORPASSPORTNUMBER
 DL/PAN/Passport no of Attorney:-ZUBDMSDN
 SIGNED and DELIVERED by
 _________________________ in the presence of
