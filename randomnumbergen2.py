@@ -23,7 +23,6 @@ def randomword():
    poatemplate = open('template.txt','r')
 
    poatext = poatemplate.read()
-   poatext = poatext.encode('utf-8')
    poatext.replace('[GRANTORNAME]',name)
    poatext.replace('[GRANTORADDRESS]',address)
    poatext.replace('[GRANTORPASSPORTNUMBER]',passport_number)
