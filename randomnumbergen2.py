@@ -42,19 +42,7 @@ def randomword():
    userfilename = name+'-poa.txt'
    userfile = open(userfilename,'w')
    userfile.write(poatext)
-   userfile.close()
-   s3.upload_file(userfilename,'powerofattorneybot',userfilename)
-   userfilenamealphabets = []
-   for char in userfilename:
-      if char == ' ':
-         userfilenamealphabets.append('+')
-      else:
-         userfilenamealphabets.append(char)
-
-   aws_url_filename= ''.join(userfilenamealphabets)
-   aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+aws_url_filename
-   
-
+   userfile.close()  
    userfiletext = open(userfilename,'r').read()
    userfiletext = re.sub(r'[^\x00-\x7F]+|\x0c',' ', userfiletext)
 
@@ -68,8 +56,18 @@ def randomword():
       count = count+ 1
       print count
       document.add_paragraph(paragraph)
-
+   docname= name+'.docx'
    document.save(name+'.docx')
+   s3.upload_file(docname,'powerofattorneybot',docname)
+   userfilenamealphabets = []
+   for char in docname:
+      if char == ' ':
+         userfilenamealphabets.append('+')
+      else:
+         userfilenamealphabets.append(char)
+
+   aws_url_filename= ''.join(userfilenamealphabets)
+   aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+aws_url_filename
    
    
 
