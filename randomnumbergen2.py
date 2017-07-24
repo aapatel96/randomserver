@@ -20,7 +20,7 @@ def randomword():
    name = request.form['name']
    address = request.form['address']
    passport_number = request.form['passport_number']
-   poatemplate = codecs.open('template.txt', encoding='utf-8')
+   poatemplate = codecs.open('template.txt','r', encoding='utf-8')
 
    poatext = poatemplate.read()
 
