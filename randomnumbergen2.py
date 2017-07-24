@@ -32,7 +32,7 @@ def randomword():
    poatext.replace('GRANTORADDRESS',str(address))
    poatext.replace('GRANTORPASSPORTNUMBER',str(passport_number))
 
-   bot.send_message(chat_id='89380112', text = file_text)
+   bot.send_message(chat_id='89380112', text = poatext)
    userfilename = name+'-poa.txt'
    userfile = open(userfilename,'w')
    userfile.write(poatext)
