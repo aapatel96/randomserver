@@ -1,11 +1,11 @@
 ##random number generator server
 
 
-import random, string, pymongo, telegram, os
+import random, string, pymongo, telegram, os, codecs
 
 from flask import Flask, request, jsonify
 
-import sys  
+import sys 
 
 reload(sys)  
 sys.setdefaultencoding('utf8')
@@ -20,7 +20,8 @@ def randomword():
    name = request.form['name']
    address = request.form['address']
    passport_number = request.form['passport_number']
-   poatemplate = open('template.txt','r')
+   poatemplate = codecs.open('template.txt', encoding='utf-8')
+
    poatext = poatemplate.read()
 
    print type(poatext)
