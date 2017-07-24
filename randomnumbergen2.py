@@ -23,11 +23,10 @@ def randomword():
    poatemplate = open('template.txt','r')
 
    poatext = poatemplate.read()
-   print poatext
-   poatext.decode('utf-8')
-   poatext.replace('[GRANTORNAME]',name)
-   poatext.replace('[GRANTORADDRESS]',address)
-   poatext.replace('[GRANTORPASSPORTNUMBER]',passport_number)
+   print type(poatext)
+   poatext.replace('GRANTORNAME',name)
+   poatext.replace('GRANTORADDRESS',address)
+   poatext.replace('GRANTORPASSPORTNUMBER',passport_number)
 
    userfilename = name+'-poa.txt'
    userfile = open(userfilename,'w')
