@@ -1,7 +1,10 @@
 ##random number generator server
 
 
-import random, string, pymongo, telegram, os, codecs, boto3
+import random, string, pymongo, telegram, os, codecs, boto3, re, os
+
+from docx import Document
+
 
 from docx import Document
 
@@ -42,7 +45,16 @@ def randomword():
    userfile.close()
    s3.upload_file(userfilename,'powerofattorneybot',userfilename)
 
-   aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+userfilename
+   userfilenamealphabets = []
+   for char in userfilename:
+      if char == ' ':
+         userfilenamealphabets.append('+')
+      else:
+         userfilenamealphabets.append(char)
+
+   aws_url_filename= ''.join(userfilenamealphabets)
+
+   aws_url='https://s3-us-west-1.amazonaws.com/powerofattorneybot/'+aws_url_filename
    
    '''
    userfile = open(userfilename,'r')
