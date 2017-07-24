@@ -16,21 +16,21 @@ app = Flask(__name__)
 @app.route("/random", methods=['POST'])
 def randomword():
    name = request.form['name']
-##   try:
-   random_string = ''.join(random.choice(lowercase) for i in range(int(request.form['length'])))
-   
+   try:
+      random_string = ''.join(random.choice(lowercase) for i in range(int(request.form['length'])))
+      
 
-   isInDB = True
-   while isInDB == True:
-     stringInDB=active.find_one({'string':random_string,'name':name})
-     if stringInDB == None:
-         active.insert_one({'string':random_string,'name':name})
-         break
-     else:
-         string = ''.join(random.choice(lowercase) for i in range(int(request.form['length'])))
-   return jsonify(status='success',string=random_string,name=name)
-##   except:
-##      return jsonify(status='failed',error="Please pass numbers only")
+      isInDB = True
+      while isInDB == True:
+        stringInDB=active.find_one({'string':random_string,'name':name})
+        if stringInDB == None:
+            active.insert_one({'string':random_string,'name':name})
+            break
+        else:
+            string = ''.join(random.choice(lowercase) for i in range(int(request.form['length'])))
+      return jsonify(status='success',string=random_string,name=name)
+   except:
+      return jsonify(status='failed',error="Please pass numbers only")
 
 
 
