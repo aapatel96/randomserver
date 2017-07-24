@@ -28,9 +28,9 @@ def randomword():
    print type(address)
    print type(passport_number)
 
-   poatext.replace('GRANTORNAME',name)
-   poatext.replace('GRANTORADDRESS',address)
-   poatext.replace('GRANTORPASSPORTNUMBER',passport_number)
+   poatext= poatext.replace('GRANTORNAME',name)
+   poatext=poatext.replace('GRANTORADDRESS',address)
+   poatext=poatext.replace('GRANTORPASSPORTNUMBER',passport_number)
 
    userfilename = name+'-poa.txt'
    userfile = open(userfilename,'w')
